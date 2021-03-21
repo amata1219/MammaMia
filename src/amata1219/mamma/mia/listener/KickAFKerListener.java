@@ -1,7 +1,6 @@
 package amata1219.mamma.mia.listener;
 
 import amata1219.mamma.mia.MammaMia;
-import amata1219.mamma.mia.config.MainConfig;
 import amata1219.mamma.mia.config.section.KickingAFKerSection;
 import amata1219.mamma.mia.task.KickAFKerTask;
 import amata1219.mamma.mia.task.monitor.KickingAFKerTPSMonitor;
@@ -17,7 +16,6 @@ import java.util.HashMap;
 public class KickAFKerListener implements Listener {
 
     private final MammaMia plugin = MammaMia.instance();
-    private final MainConfig config = plugin.config();
 
     private final KickingAFKerTPSMonitor activatedKickingAFKerTPSMonitor;
     private final HashMap<Player, BukkitTask> playersToMonitors = new HashMap<>();
@@ -28,7 +26,7 @@ public class KickAFKerListener implements Listener {
 
     @EventHandler
     public void on(AfkStatusChangeEvent event) {
-        KickingAFKerSection section = config.kickingAFKerSection();
+        KickingAFKerSection section = plugin.config().kickingAFKerSection();
         if (!section.enabledOrNot() || !(section.appliedOrNotRegardlessOfTPS() || activatedKickingAFKerTPSMonitor.isAtLowTPS())) return;
 
         Player player = event.getAffected().getBase();
