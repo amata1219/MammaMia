@@ -4,10 +4,11 @@ import amata1219.mamma.mia.MammaMia;
 import amata1219.mamma.mia.config.MainConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.lang.reflect.Field;
 
-public abstract class TPSMonitor implements Runnable {
+public abstract class TPSMonitor extends BukkitRunnable {
 
     private static final double[] RECENT_TPS;
 

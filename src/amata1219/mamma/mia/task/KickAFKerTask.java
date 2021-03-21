@@ -4,8 +4,9 @@ import amata1219.mamma.mia.MammaMia;
 import amata1219.mamma.mia.config.MainConfig;
 import amata1219.mamma.mia.config.section.KickingAFKerSection;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
-public class KickAFKerTask implements Runnable {
+public class KickAFKerTask extends BukkitRunnable {
 
     private final MainConfig config = MammaMia.instance().config();
 
