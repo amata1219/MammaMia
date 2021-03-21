@@ -1,0 +1,66 @@
+'Restriction on elytra boosts by fireworks':
+#エリスラブースターの制限機能について
+  'Enabled or not': true
+  #有効にするかどうか(trueで有効、falseで無効)
+  'Messaging intervals': 300
+  #メッセージを表示する間隔(単位は秒)
+  'Applied or not regardless of TPS': false
+  #TPSに関わらず制限を適用するかどうか(trueで有効、falseで無効)
+  'Target worlds':
+  #制限を行うワールド
+    - world
+    - world_nether
+    - world_the_end
+    - shigen
+    - shigen2
+    #全ワールドを対象とするには ALL を指定
+  'TPS Threshold to which the restriction applies': 16
+  #制限の適用を開始するTPSの閾値
+  'Message':
+  #各メッセージについて
+    'When the plugin started appling the restriction': "TPS減少のため、エリトラブースター制限を実施します！"
+    #制限を開始する時に表示するメッセージ
+    'When the plugin stopped appling the restriction': "TPSが復活しましたのでエリトラブースター制限を解除します。ご協力ありがとうございました！"
+    #制限を終了する時に表示するメッセージ
+    'When the plugin blocked elytra boosting': "只今エリトラブースター制限が実施されています。ご不便お掛けしますがご協力お願いします。"
+    #エリトラブースターの使用がキャンセルされた時に表示するメッセージ
+'Temporary boat':
+#水面や氷上をクリックすることでボートを召喚できる機能について
+  'Enabled or not': true
+  #有効にするかどうか(trueで有効、falseで無効)
+  'Target worlds':
+  #機能を使用できるワールド
+    - world
+    - world_nether
+    - world_the_end
+    - shigen
+    - shigen2
+    #全ワールドを対象とするには ALL を指定
+'Kicking AFKer':
+#放置キック機能について
+  'Enabled or not': true
+  #有効にするかどうか(trueで有効、falseで無効)
+  'Messaging intervals': 300
+  #定期メッセージを表示する間隔(単位は秒)
+  'Applied or not regardless of TPS': false
+  #TPSに関わらず放置キックを行うかどうか(trueで有効、falseで無効)
+  'TPS Threshold to which the rule applies': 16
+  #放置キックを行い始めるTPSの閾値
+  'AFKed time required for kicks': 5
+  #放置と見做されるAFK時間(単位は分)
+  'Message':
+  #各メッセージについて
+    'When the plugin started appling the rule': "TPS減少のため、放置キックを実施します！"
+    #放置キックの開始時に表示するメッセージ
+    'When the plugin stopped appling the rule': "TPSが復活しましたので放置キックを終了します。ご協力ありがとうございました！"
+    #放置キックの終了時に表示するメッセージ
+    'When the plugin kicked AFKer': "放置状態で一定時間が経過したためキックされました。"
+    #キックされたプレイヤーのログアウト画面に表示するメッセージ
+'Temporary minecart':
+#レール上をクリックすることでトロッコを召喚できる機能について
+  'Enabled or not': true
+  #有効にするかどうか(trueで有効、falseで無効)
+  'Target worlds':
+  #機能を使用できるワールド
+    - ALL
+    #全ワールドを対象とするには ALL を指定
