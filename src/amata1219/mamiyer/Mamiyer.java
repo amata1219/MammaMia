@@ -31,4 +31,8 @@ public class Mamiyer extends JavaPlugin {
         return commands.get(label).onCommand(sender, command, label, args);
     }
 
+    public static Mamiyer plugin() {
+        return instance;
+    }
+
 }
