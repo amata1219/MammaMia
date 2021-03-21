@@ -8,6 +8,7 @@ public abstract class ConfigSection {
 
     public ConfigSection(MainConfig config) {
         this.config = config;
+        loadValues();
     }
 
     public abstract void loadValues();

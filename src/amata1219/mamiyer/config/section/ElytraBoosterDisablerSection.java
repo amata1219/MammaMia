@@ -17,7 +17,6 @@ public class ElytraBoosterDisablerSection extends ConfigSection {
 
     public ElytraBoosterDisablerSection(MainConfig config) {
         super(config);
-        loadValues();
     }
 
     @Override
