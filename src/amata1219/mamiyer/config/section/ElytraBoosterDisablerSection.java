@@ -4,9 +4,7 @@ import amata1219.mamiyer.config.MainConfig;
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.configuration.ConfigurationSection;
 
-public class ElytraBoosterDisablerSection {
-
-    private final MainConfig config;
+public class ElytraBoosterDisablerSection extends ConfigSection {
 
     private boolean enabledOrNot;
     private int messagingIntervals;
@@ -18,10 +16,11 @@ public class ElytraBoosterDisablerSection {
     private String blockedElytraBoostingMessage;
 
     public ElytraBoosterDisablerSection(MainConfig config) {
-        this.config = config;
+        super(config);
         loadValues();
     }
 
+    @Override
     public void loadValues() {
         ConfigurationSection section = config.config().getConfigurationSection("Restriction on elytra boosts by fireworks");
         enabledOrNot = section.getBoolean("Enabled or not");
