@@ -18,7 +18,7 @@ public class MamiyaCommand implements BukkitCommandExecutor {
         Mamiyer plugin = Mamiyer.instance();
 
         CommandContext<CommandSender> reload = (sender, unparsedArguments, parsedArguments) -> {
-            plugin.reloadConfig();
+            plugin.config().reloadConfig();
             sender.sendMessage(ChatColor.AQUA + "コンフィグの再読み込みを行いました。");
             if (sender instanceof Player) SoundEffects.SUCCEEDED.play((Player) sender);
         };

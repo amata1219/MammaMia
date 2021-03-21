@@ -38,6 +38,7 @@ public abstract class Config {
         InputStream defConfigStream = plugin.getResource(fileName);
         if (defConfigStream == null) return;
         config.setDefaults( YamlConfiguration.loadConfiguration(new InputStreamReader(defConfigStream, StandardCharsets.UTF_8)));
+        loadSections();
     }
 
     public FileConfiguration config() {
