@@ -4,6 +4,8 @@ import amata1219.mamma.mia.command.MamiyaCommand;
 import amata1219.mamma.mia.config.MainConfig;
 import amata1219.mamma.mia.listener.CancelBoostingElytraListener;
 import amata1219.mamma.mia.listener.KickAFKerListener;
+import amata1219.mamma.mia.listener.TemporaryBoatListener;
+import amata1219.mamma.mia.listener.TemporaryMinecartListener;
 import amata1219.mamma.mia.task.monitor.BoostingElytraTPSMonitor;
 import amata1219.mamma.mia.task.monitor.KickingAFKerTPSMonitor;
 import com.google.common.collect.ImmutableMap;
@@ -45,7 +47,9 @@ public class MammaMia extends JavaPlugin {
 
         registerEventListeners(
                 new KickAFKerListener(kickingAFKerTPSMonitor),
-                new CancelBoostingElytraListener(boostingElytraTPSMonitor)
+                new TemporaryBoatListener(),
+                new CancelBoostingElytraListener(boostingElytraTPSMonitor),
+                new TemporaryMinecartListener()
         );
     }
 
