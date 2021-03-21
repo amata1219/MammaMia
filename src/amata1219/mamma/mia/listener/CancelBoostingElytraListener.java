@@ -24,7 +24,7 @@ public class CancelBoostingElytraListener implements Listener {
     }
 
     @EventHandler
-    public void onInteract(PlayerInteractEvent event) {
+    public void on(PlayerInteractEvent event) {
         ElytraBoosterDisablerSection section = plugin.config().elytraBoosterDisablerSection();
         if (!section.enabledOrNot()) return;
 

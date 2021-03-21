@@ -26,13 +26,13 @@ import java.util.Random;
 public class TemporaryBoatListener implements Listener {
 
     private static final Random RANDOM = new Random();
-    private static final String TEMPORARY_BOAT_METADATA = "mamma-mia-boat";
+    private static final String TEMPORARY_BOAT_METADATA = "mamma-mia-temp-boat";
     private static final List<TreeSpecies> BOAT_MATERIAL_TYPES = Arrays.asList(TreeSpecies.values());
 
     private final MammaMia plugin = MammaMia.instance();
 
     @EventHandler
-    public void onInteract(PlayerInteractEvent event) {
+    public void on(PlayerInteractEvent event) {
         TemporaryBoatSection section = plugin.config().temporaryBoatSection();
         if (!section.enabledOrNot() || event.getAction() != Action.RIGHT_CLICK_BLOCK || event.isBlockInHand()) return;
 
@@ -61,7 +61,7 @@ public class TemporaryBoatListener implements Listener {
     }
 
     @EventHandler
-    public void onVehicleExit(VehicleExitEvent event) {
+    public void on(VehicleExitEvent event) {
         TemporaryBoatSection section = plugin.config().temporaryBoatSection();
         if (!section.enabledOrNot()) return;
 
