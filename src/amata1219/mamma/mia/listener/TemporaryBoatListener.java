@@ -40,11 +40,9 @@ public class TemporaryBoatListener implements Listener {
         if (player.isInsideVehicle() || player.isSneaking() || player.hasMetadata("race") || player.hasMetadata("race-team")) return;
 
         Block block = event.getClickedBlock();
-        Material clicked = block.getType();
-        if (!clicked.name().endsWith("ICE")) return;
+        if (!block.getType().name().endsWith("ICE")) return;
 
-        Material handItemType = event.getMaterial();
-        if (handItemType.name().endsWith("_BOAT")) return;
+        if (event.getMaterial().name().endsWith("_BOAT")) return;
 
         ImmutableSet<String> targetWorlds = section.targetWorlds();
         if (!(targetWorlds.contains(player.getWorld().getName()) || targetWorlds.contains("ALL"))) return;
