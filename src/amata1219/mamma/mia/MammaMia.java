@@ -2,7 +2,9 @@ package amata1219.mamma.mia;
 
 import amata1219.mamma.mia.command.MamiyaCommand;
 import amata1219.mamma.mia.config.MainConfig;
+import amata1219.mamma.mia.listener.CancelBoostingElytraListener;
 import amata1219.mamma.mia.listener.KickAFKerListener;
+import amata1219.mamma.mia.task.monitor.BoostingElytraTPSMonitor;
 import amata1219.mamma.mia.task.monitor.KickingAFKerTPSMonitor;
 import com.google.common.collect.ImmutableMap;
 import org.bukkit.command.Command;
@@ -38,14 +40,13 @@ public class MammaMia extends JavaPlugin {
         KickingAFKerTPSMonitor kickingAFKerTPSMonitor = new KickingAFKerTPSMonitor();
         runningTasks.add(kickingAFKerTPSMonitor.runTaskTimer(this, 1200, config().kickingAFKerSection().messagingIntervals() * 20));
 
+        BoostingElytraTPSMonitor boostingElytraTPSMonitor = new BoostingElytraTPSMonitor();
+        runningTasks.add(boostingElytraTPSMonitor.runTaskTimer(this, 1200, config.elytraBoosterDisablerSection().messagingIntervals() * 20));
 
         registerEventListeners(
-                new KickAFKerListener(kickingAFKerTPSMonitor)
+                new KickAFKerListener(kickingAFKerTPSMonitor),
+                new CancelBoostingElytraListener(boostingElytraTPSMonitor)
         );
-        /*
-        int intervals = plugin.config().getInt("Kicking AFKer.Messaging intervals");
-		return observer.runTaskTimer(plugin, 1200, intervals * 20);
-         */
     }
 
     @Override
