@@ -24,23 +24,23 @@ public class CancelBoostingElytraListener implements Listener {
     }
 
     @EventHandler
-    public void onInteract(PlayerInteractEvent event){
+    public void onInteract(PlayerInteractEvent event) {
         ElytraBoosterDisablerSection section = plugin.config().elytraBoosterDisablerSection();
-        if(!section.enabledOrNot()) return;
+        if (!section.enabledOrNot()) return;
 
         Action action = event.getAction();
-        if(action != Action.RIGHT_CLICK_AIR && action != Action.RIGHT_CLICK_BLOCK) return;
+        if (action != Action.RIGHT_CLICK_AIR && action != Action.RIGHT_CLICK_BLOCK) return;
 
         Player player = event.getPlayer();
-        if(!player.isGliding()) return;
+        if (!player.isGliding()) return;
 
         ItemStack item = event.getItem();
-        if(item == null || item.getType() != Material.FIREWORK_ROCKET) return;
+        if (item == null || item.getType() != Material.FIREWORK_ROCKET) return;
 
-        if(!(section.appliedOrNotRegardlessOfTPS() || activatedBoostingElytraTPSMonitor.isAtLowTPS())) return;
+        if (!(section.appliedOrNotRegardlessOfTPS() || activatedBoostingElytraTPSMonitor.isAtLowTPS())) return;
 
         ImmutableSet<String> targetWorlds = section.targetWorlds();
-        if(!(targetWorlds.contains(player.getWorld().getName()) || targetWorlds.contains("ALL"))) return;
+        if (!(targetWorlds.contains(player.getWorld().getName()) || targetWorlds.contains("ALL"))) return;
 
         player.sendMessage(section.blocedElytraBoostingMessage());
         SoundEffects.FAILED.play(player);
