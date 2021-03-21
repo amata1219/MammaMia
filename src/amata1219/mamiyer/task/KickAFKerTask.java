@@ -1,38 +1,25 @@
 package amata1219.mamiyer.task;
 
+import amata1219.mamiyer.Mamiyer;
+import amata1219.mamiyer.config.MainConfig;
+import amata1219.mamiyer.config.section.KickingAFKerSection;
 import org.bukkit.entity.Player;
 
 public class KickAFKerTask implements Runnable {
 
-    private final Player player;
-    private int elapsedMinutes;
+    private final MainConfig config = Mamiyer.instance().config();
+
+    private final Player monitoredPlayer;
+    private int idleMinutes;
 
     public KickAFKerTask(Player player) {
-        this.player = player;
+        this.monitoredPlayer = player;
     }
 
     @Override
     public void run() {
-
+        KickingAFKerSection section = config.kickingAFKerSection();
+        if (++idleMinutes >= section.afkedTimeRequiredForKicks()) monitoredPlayer.kickPlayer(section.kickedAFKerMessage());
     }
-
-    /*
-    	private final MamiyaAssist plugin = MamiyaAssist.plugin();
-
-	@Override
-	public void run() {
-		elapsedMinutes++;
-
-		if(elapsedMinutes >= afkedTimeRequiredForKicks()) player.kickPlayer(kickMessage());
-	}
-
-	private int afkedTimeRequiredForKicks(){
-		return plugin.config().getInt("Kicking AFKer.AFKed time required for kicks");
-	}
-
-	private String kickMessage(){
-		return plugin.config().getString("Kicking AFKer.Message.When the plugin kicked AFKer");
-	}
-     */
 
 }
