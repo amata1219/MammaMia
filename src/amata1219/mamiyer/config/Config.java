@@ -10,21 +10,22 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-public class Config {
+public abstract class Config {
 
     private final Mamiyer plugin = Mamiyer.instance();
 
     private FileConfiguration config = null;
-    private final File configFile;
-    private final String file;
+    private final File file;
+    private final String fileName;
 
     public Config(String fileName) {
-        this.file = fileName;
-        configFile = new File(plugin.getDataFolder(), file);
+        this.fileName = fileName;
+        this.file = new File(plugin.getDataFolder(), this.fileName);
+        loadSections();
     }
 
     public void saveDefaultConfig() {
-        if(!configFile.exists()) plugin.saveResource(file, false);
+        if (!file.exists()) plugin.saveResource(fileName, false);
     }
 
     public void updateConfig() {
@@ -33,8 +34,8 @@ public class Config {
     }
 
     public void reloadConfig() {
-        config = YamlConfiguration.loadConfiguration(configFile);
-        InputStream defConfigStream = plugin.getResource(file);
+        config = YamlConfiguration.loadConfiguration(file);
+        InputStream defConfigStream = plugin.getResource(fileName);
         if (defConfigStream == null) return;
         config.setDefaults( YamlConfiguration.loadConfiguration(new InputStreamReader(defConfigStream, StandardCharsets.UTF_8)));
     }
@@ -45,13 +46,15 @@ public class Config {
     }
 
     public void saveConfig() {
-        if(config == null) return;
+        if (config == null) return;
 
         try {
-            config().save(configFile);
+            config().save(file);
         } catch (IOException ignored) {
 
         }
     }
+
+    public abstract void loadSections();
 
 }

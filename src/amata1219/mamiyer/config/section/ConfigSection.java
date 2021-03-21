@@ -1,12 +1,12 @@
 package amata1219.mamiyer.config.section;
 
-import amata1219.mamiyer.config.MainConfig;
+import amata1219.mamiyer.config.Config;
 
 public abstract class ConfigSection {
 
-    protected MainConfig config;
+    protected Config config;
 
-    public ConfigSection(MainConfig config) {
+    public ConfigSection(Config config) {
         this.config = config;
         loadValues();
     }

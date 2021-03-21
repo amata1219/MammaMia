@@ -27,9 +27,11 @@ public class ElytraBoosterDisablerSection extends ConfigSection {
         appliedOrNotRegardlessOfTPS = section.getBoolean("Applied or not regardless of TPS");
         targetWorlds = ImmutableSet.copyOf(section.getStringList("Target worlds"));
         tpsThresholdToWhichRestrictionApplies = section.getInt("TPS Threshold to which the restriction applies");
-        startedApplyingRestrictionMessage = section.getString("When the plugin started applying the restriction");
-        stoppedApplyingRestrictionMessage = section.getString("When the plugin stopped applying the restriction");
-        blockedElytraBoostingMessage = section.getString("When the plugin blocked elytra boosting");
+
+        ConfigurationSection message = section.getConfigurationSection("Message");
+        startedApplyingRestrictionMessage = message.getString("When the plugin started applying the restriction");
+        stoppedApplyingRestrictionMessage = message.getString("When the plugin stopped applying the restriction");
+        blockedElytraBoostingMessage = message.getString("When the plugin blocked elytra boosting");
     }
 
     public boolean enabledOrNot() {
