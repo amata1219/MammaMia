@@ -1,5 +1,5 @@
-name: Mamiyer
-main: amata1219.mamiyer.Mamiyer
+name: MammaMia
+main: amata1219.mamma.mia.MammaMia
 version: 1.0.0
 api-version: '1.16'
 softdepend: [Essentials]
