@@ -1,5 +1,6 @@
 package amata1219.mamiyer;
 
+import amata1219.mamiyer.command.MamiyaCommand;
 import com.google.common.collect.ImmutableMap;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,7 +14,9 @@ public class Mamiyer extends JavaPlugin {
 
     private static Mamiyer instance;
 
-    private final Map<String, CommandExecutor> commands = ImmutableMap.of();
+    private final Map<String, CommandExecutor> commands = ImmutableMap.of(
+            "mamiya", new MamiyaCommand()
+    );
 
     @Override
     public void onEnable() {
