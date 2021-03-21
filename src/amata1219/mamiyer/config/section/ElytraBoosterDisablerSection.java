@@ -1,5 +1,6 @@
-package amata1219.mamiyer.config;
+package amata1219.mamiyer.config.section;
 
+import amata1219.mamiyer.config.MainConfig;
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.configuration.ConfigurationSection;
 
