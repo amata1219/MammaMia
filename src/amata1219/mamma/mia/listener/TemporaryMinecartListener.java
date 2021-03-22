@@ -25,13 +25,13 @@ public class TemporaryMinecartListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void on(PlayerInteractEvent event) {
         TemporaryBoatSection section = plugin.config().temporaryBoatSection();
-        if (!section.enabledOrNot() || event.getAction() != Action.RIGHT_CLICK_BLOCK || event.isBlockInHand() || event.getHand() != EquipmentSlot.HAND) return;
+        if (!section.enabledOrNot() || event.getAction() != Action.RIGHT_CLICK_BLOCK || event.isBlockInHand() || event.getHand() != EquipmentSlot.HAND || isMinecart(event.getMaterial())) return;
 
         Player player = event.getPlayer();
-        if (player.isInsideVehicle() || player.isSneaking()) return;
+        if (player.isInsideVehicle() || player.isSneaking() || isMinecart(player.getInventory().getItemInOffHand().getType())) return;
 
         Block block = event.getClickedBlock();
-        if (!block.getType().name().endsWith("RAIL") || event.getMaterial() == Material.MINECART) return;
+        if (!block.getType().name().endsWith("RAIL")) return;
 
         ImmutableSet<String> targetWorlds = section.targetWorlds();
         if (!(targetWorlds.contains(player.getWorld().getName()) || targetWorlds.contains("ALL"))) return;
@@ -53,6 +53,10 @@ public class TemporaryMinecartListener implements Listener {
         if (!(vehicle instanceof Minecart)) return;
 
         if (vehicle.hasMetadata(TEMPORARY_MINECART_METADATA)) vehicle.remove();
+    }
+
+    private static boolean isMinecart(Material type) {
+        return type.name().endsWith("MINECART");
     }
 
 }
