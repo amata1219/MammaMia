@@ -26,6 +26,7 @@ public class MammaMia extends JavaPlugin {
     private Map<String, CommandExecutor> commands;
 
     private final ArrayList<BukkitTask> runningTasks = new ArrayList<>();
+    private KickAFKerListener kickAFKerListener;
 
     @Override
     public void onEnable() {
@@ -41,11 +42,14 @@ public class MammaMia extends JavaPlugin {
         KickingAFKerTPSMonitor kickingAFKerTPSMonitor = new KickingAFKerTPSMonitor();
         runningTasks.add(kickingAFKerTPSMonitor.runTaskTimer(this, 1200, config().kickingAFKerSection().messagingIntervals() * 20));
 
+        kickAFKerListener = new KickAFKerListener(kickingAFKerTPSMonitor);
+        getServer().getOnlinePlayers().forEach(kickAFKerListener::startMonitoring);
+
         BoostingElytraTPSMonitor boostingElytraTPSMonitor = new BoostingElytraTPSMonitor();
         runningTasks.add(boostingElytraTPSMonitor.runTaskTimer(this, 1200, config.elytraBoosterDisablerSection().messagingIntervals() * 20));
 
         registerEventListeners(
-                new KickAFKerListener(kickingAFKerTPSMonitor),
+                kickAFKerListener,
                 new TemporaryIceBoatListener(),
                 new CancelBoostingElytraListener(boostingElytraTPSMonitor),
                 new TemporaryMinecartListener(),
@@ -56,6 +60,7 @@ public class MammaMia extends JavaPlugin {
     @Override
     public void onDisable() {
         HandlerList.unregisterAll(this);
+        getServer().getOnlinePlayers().forEach(kickAFKerListener::stopMonitoring);
         runningTasks.forEach(BukkitTask::cancel);
     }
 

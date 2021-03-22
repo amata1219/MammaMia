@@ -30,7 +30,7 @@ public class KickAFKerListener implements Listener {
         if (!section.enabledOrNot() || !(section.appliedOrNotRegardlessOfTPS() || activatedKickingAFKerTPSMonitor.isAtLowTPS())) return;
 
         Player player = event.getAffected().getBase();
-        if (event.getValue()) playersToMonitors.put(player, new KickAFKerTask(player).runTaskTimer(plugin, 1200, 1200));
+        if (event.getValue()) startMonitoring(player);
         else stopMonitoring(player);
     }
 
@@ -39,7 +39,11 @@ public class KickAFKerListener implements Listener {
         stopMonitoring(event.getPlayer());
     }
 
-    private void stopMonitoring(Player player) {
+    public void startMonitoring(Player player) {
+        playersToMonitors.put(player, new KickAFKerTask(player).runTaskTimer(plugin, 1200, 1200));
+    }
+
+    public void stopMonitoring(Player player) {
         playersToMonitors.remove(player).cancel();
     }
 
