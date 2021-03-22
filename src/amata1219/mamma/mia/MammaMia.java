@@ -42,14 +42,11 @@ public class MammaMia extends JavaPlugin {
         KickingAFKerTPSMonitor kickingAFKerTPSMonitor = new KickingAFKerTPSMonitor();
         runningTasks.add(kickingAFKerTPSMonitor.runTaskTimer(this, 1200, config().kickingAFKerSection().messagingIntervals() * 20));
 
-        kickAFKerListener = new KickAFKerListener(kickingAFKerTPSMonitor);
-        getServer().getOnlinePlayers().forEach(kickAFKerListener::startMonitoring);
-
         BoostingElytraTPSMonitor boostingElytraTPSMonitor = new BoostingElytraTPSMonitor();
         runningTasks.add(boostingElytraTPSMonitor.runTaskTimer(this, 1200, config.elytraBoosterDisablerSection().messagingIntervals() * 20));
 
         registerEventListeners(
-                kickAFKerListener,
+                kickAFKerListener = new KickAFKerListener(kickingAFKerTPSMonitor),
                 new TemporaryIceBoatListener(),
                 new CancelBoostingElytraListener(boostingElytraTPSMonitor),
                 new TemporaryMinecartListener(),

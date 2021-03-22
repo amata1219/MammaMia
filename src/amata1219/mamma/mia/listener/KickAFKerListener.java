@@ -44,7 +44,8 @@ public class KickAFKerListener implements Listener {
     }
 
     public void stopMonitoring(Player player) {
-        playersToMonitors.remove(player).cancel();
+        BukkitTask runningTask = playersToMonitors.remove(player);
+        if (runningTask != null) runningTask.cancel();
     }
 
 }
