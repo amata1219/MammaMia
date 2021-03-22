@@ -32,7 +32,7 @@
   #機能を使用できるワールド
     - ALL
     #全ワールドを対象とするには ALL を指定
-`Temporary boat on water`:
+'Temporary boat on water':
    #水面を向いてFキーを押下することでボートを召喚できる機能について
    'Enabled or not': true
    #有効にするかどうか(trueで有効、falseで無効)
