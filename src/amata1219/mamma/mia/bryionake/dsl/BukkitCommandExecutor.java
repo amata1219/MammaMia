@@ -34,7 +34,7 @@ public interface BukkitCommandExecutor extends CommandExecutor {
     default <S extends CommandSender> BranchContext<S> define(Supplier<String> argumentNotFoundErrorMessage, Pair<String, CommandContext<S>>... branches) {
         HashMap<String, CommandContext<S>> contexts = new HashMap<>();
         for (Pair<String, CommandContext<S>> branch : branches) contexts.put(branch.left, branch.right);
-        return new BranchContext<>(() -> prefixErrorMessage(argumentNotFoundErrorMessage), contexts);
+        return new BranchContext<>(argumentNotFoundErrorMessage, contexts);
     }
 
     default <S extends CommandSender> Pair<String, CommandContext<S>> bind(String label, CommandContext<S> context) {
