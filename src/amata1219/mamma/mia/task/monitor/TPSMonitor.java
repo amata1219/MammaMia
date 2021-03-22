@@ -3,16 +3,17 @@ package amata1219.mamma.mia.task.monitor;
 import amata1219.mamma.mia.MammaMia;
 import amata1219.mamma.mia.config.MainConfig;
 import org.bukkit.Bukkit;
-import org.bukkit.Server;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.lang.reflect.Field;
+import org.joor.Reflect;
 
 public abstract class TPSMonitor extends BukkitRunnable {
 
-    private static final double[] RECENT_TPS;
+    private static final double[] RECENT_TPS = Reflect.on(Bukkit.getServer())
+            .field("console")
+            .field("recentTps")
+            .get();
 
-    static {
+    /*static {
         Server server = Bukkit.getServer();
         String version = server.getClass().getPackage().getName().replaceFirst(".*(\\d+_\\d+_R\\d+).*", "$1");
 
@@ -63,7 +64,7 @@ public abstract class TPSMonitor extends BukkitRunnable {
         }
 
         RECENT_TPS = recentTps;
-    }
+    }*/
 
     protected final MainConfig config = MammaMia.instance().config();
     private boolean isAtLowTPS;
