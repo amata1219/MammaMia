@@ -1,7 +1,7 @@
 package amata1219.mamma.mia.listener;
 
 import amata1219.mamma.mia.MammaMia;
-import amata1219.mamma.mia.config.section.TemporaryBoatSection;
+import amata1219.mamma.mia.config.section.TemporaryIceBoatSection;
 import amata1219.mamma.mia.config.section.TemporaryMinecartSection;
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.Location;
@@ -24,7 +24,7 @@ public class TemporaryMinecartListener implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     public void on(PlayerInteractEvent event) {
-        TemporaryBoatSection section = plugin.config().temporaryBoatSection();
+        TemporaryIceBoatSection section = plugin.config().temporaryIceBoatSection();
         if (!section.enabledOrNot() || event.getAction() != Action.RIGHT_CLICK_BLOCK || event.isBlockInHand() || event.getHand() != EquipmentSlot.HAND || isMinecart(event.getMaterial())) return;
 
         Player player = event.getPlayer();

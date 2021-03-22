@@ -1,7 +1,7 @@
 package amata1219.mamma.mia.listener;
 
 import amata1219.mamma.mia.MammaMia;
-import amata1219.mamma.mia.config.section.TemporaryBoatSection;
+import amata1219.mamma.mia.config.section.TemporaryIceBoatSection;
 import amata1219.mamma.mia.reflect.APIPackage;
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.Location;
@@ -34,7 +34,7 @@ public class TemporaryBoatListener implements Listener {
 
     @EventHandler
     public void on(PlayerInteractEvent event) {
-        TemporaryBoatSection section = plugin.config().temporaryBoatSection();
+        TemporaryIceBoatSection section = plugin.config().temporaryIceBoatSection();
         Action action = event.getAction();
         if (event.getHand() != EquipmentSlot.HAND || !section.enabledOrNot() || event.isBlockInHand() || (action != Action.RIGHT_CLICK_AIR && action != Action.RIGHT_CLICK_BLOCK) || isBoat(event.getMaterial())) return;
 
@@ -64,7 +64,7 @@ public class TemporaryBoatListener implements Listener {
 
     @EventHandler
     public void on(VehicleExitEvent event) {
-        TemporaryBoatSection section = plugin.config().temporaryBoatSection();
+        TemporaryIceBoatSection section = plugin.config().temporaryIceBoatSection();
         if (!section.enabledOrNot()) return;
 
         Vehicle vehicle = event.getVehicle();

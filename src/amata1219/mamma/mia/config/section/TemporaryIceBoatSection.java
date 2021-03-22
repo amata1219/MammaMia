@@ -4,18 +4,18 @@ import amata1219.mamma.mia.config.MainConfig;
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.configuration.ConfigurationSection;
 
-public class TemporaryBoatSection extends ConfigSection {
+public class TemporaryIceBoatSection extends ConfigSection {
 
     private boolean enabledOrNot;
     private ImmutableSet<String> targetWorlds;
 
-    public TemporaryBoatSection(MainConfig config) {
+    public TemporaryIceBoatSection(MainConfig config) {
         super(config);
     }
 
     @Override
     public void loadValues() {
-        ConfigurationSection section = config.config().getConfigurationSection("Temporary boat");
+        ConfigurationSection section = config.config().getConfigurationSection("Temporary boat on ice");
         enabledOrNot = section.getBoolean("Enabled or not");
         targetWorlds = ImmutableSet.copyOf(section.getStringList("Target worlds"));
     }

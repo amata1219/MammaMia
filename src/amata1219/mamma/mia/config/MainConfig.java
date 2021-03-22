@@ -1,16 +1,14 @@
 package amata1219.mamma.mia.config;
 
-import amata1219.mamma.mia.config.section.ElytraBoosterDisablerSection;
-import amata1219.mamma.mia.config.section.KickingAFKerSection;
-import amata1219.mamma.mia.config.section.TemporaryBoatSection;
-import amata1219.mamma.mia.config.section.TemporaryMinecartSection;
+import amata1219.mamma.mia.config.section.*;
 
 public class MainConfig extends Config {
 
     private ElytraBoosterDisablerSection elytraBoosterDisablerSection;
-    private TemporaryBoatSection temporaryBoatSection;
+    private TemporaryIceBoatSection temporaryIceBoatSection;
     private KickingAFKerSection kickingAFKerSection;
     private TemporaryMinecartSection temporaryMinecartSection;
+    private TemporaryWaterBoatSection temporaryWaterBoatSection;
 
     public MainConfig() {
         super("config.yml");
@@ -19,17 +17,18 @@ public class MainConfig extends Config {
     @Override
     public void loadSections() {
         elytraBoosterDisablerSection = new ElytraBoosterDisablerSection(this);
-        temporaryBoatSection = new TemporaryBoatSection(this);
+        temporaryIceBoatSection = new TemporaryIceBoatSection(this);
         kickingAFKerSection = new KickingAFKerSection(this);
         temporaryMinecartSection = new TemporaryMinecartSection(this);
+        temporaryWaterBoatSection = new TemporaryWaterBoatSection(this);
     }
 
     public ElytraBoosterDisablerSection elytraBoosterDisablerSection() {
         return elytraBoosterDisablerSection;
     }
 
-    public TemporaryBoatSection temporaryBoatSection() {
-        return temporaryBoatSection;
+    public TemporaryIceBoatSection temporaryIceBoatSection() {
+        return temporaryIceBoatSection;
     }
 
     public KickingAFKerSection kickingAFKerSection() {
@@ -38,6 +37,10 @@ public class MainConfig extends Config {
 
     public TemporaryMinecartSection temporaryMinecartSection() {
         return temporaryMinecartSection;
+    }
+
+    public TemporaryWaterBoatSection temporaryWaterBoatSection() {
+        return temporaryWaterBoatSection;
     }
 
 }
