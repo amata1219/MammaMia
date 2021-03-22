@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.metadata.FixedMetadataValue;
 
 public class TemporaryMinecartListener implements Listener {
@@ -24,7 +25,7 @@ public class TemporaryMinecartListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void on(PlayerInteractEvent event) {
         TemporaryBoatSection section = plugin.config().temporaryBoatSection();
-        if (!section.enabledOrNot() || event.getAction() != Action.RIGHT_CLICK_BLOCK || event.isBlockInHand()) return;
+        if (!section.enabledOrNot() || event.getAction() != Action.RIGHT_CLICK_BLOCK || event.isBlockInHand() || event.getHand() != EquipmentSlot.HAND) return;
 
         Player player = event.getPlayer();
         if (player.isInsideVehicle() || player.isSneaking()) return;
