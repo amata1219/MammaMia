@@ -26,9 +26,7 @@ public class MammaMia extends JavaPlugin {
 
     private MainConfig config;
 
-    private final Map<String, CommandExecutor> commands = ImmutableMap.of(
-            "mamiya", new MamiyaCommand()
-    );
+    private Map<String, CommandExecutor> commands;
 
     private final ArrayList<BukkitTask> runningTasks = new ArrayList<>();
 
@@ -38,6 +36,10 @@ public class MammaMia extends JavaPlugin {
 
         config = new MainConfig();
         config.saveDefaultConfig();
+
+        commands = ImmutableMap.of(
+                "mamiya", new MamiyaCommand()
+        );
 
         KickingAFKerTPSMonitor kickingAFKerTPSMonitor = new KickingAFKerTPSMonitor();
         runningTasks.add(kickingAFKerTPSMonitor.runTaskTimer(this, 1200, config().kickingAFKerSection().messagingIntervals() * 20));
