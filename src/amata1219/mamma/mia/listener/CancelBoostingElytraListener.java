@@ -23,7 +23,7 @@ public class CancelBoostingElytraListener implements Listener {
         this.activatedBoostingElytraTPSMonitor = activatedBoostingElytraTPSMonitor;
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void on(PlayerInteractEvent event) {
         ElytraBoosterDisablerSection section = plugin.config().elytraBoosterDisablerSection();
         if (!section.enabledOrNot()) return;

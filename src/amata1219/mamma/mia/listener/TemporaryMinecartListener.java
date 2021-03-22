@@ -21,7 +21,7 @@ public class TemporaryMinecartListener implements Listener {
 
     private final MammaMia plugin = MammaMia.instance();
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void on(PlayerInteractEvent event) {
         TemporaryBoatSection section = plugin.config().temporaryBoatSection();
         if (!section.enabledOrNot() || event.getAction() != Action.RIGHT_CLICK_BLOCK || event.isBlockInHand()) return;
