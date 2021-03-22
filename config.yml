@@ -24,18 +24,22 @@
     #制限を終了する時に表示するメッセージ
     'When the plugin blocked elytra boosting': "只今エリトラブースター制限が実施されています。ご不便お掛けしますがご協力お願いします。"
     #エリトラブースターの使用がキャンセルされた時に表示するメッセージ
-'Temporary boat':
-#水面や氷上をクリックすることでボートを召喚できる機能について
+'Temporary boat on ice':
+#氷上をクリックすることでボートを召喚できる機能について
   'Enabled or not': true
   #有効にするかどうか(trueで有効、falseで無効)
   'Target worlds':
   #機能を使用できるワールド
-    - world
-    - world_nether
-    - world_the_end
-    - shigen
-    - shigen2
+    - ALL
     #全ワールドを対象とするには ALL を指定
+`Temporary boat on water`:
+   #水面を向いてFキーを押下することでボートを召喚できる機能について
+   'Enabled or not': true
+   #有効にするかどうか(trueで有効、falseで無効)
+   'Target worlds':
+     #機能を使用できるワールド
+     - ALL
+     #全ワールドを対象とするには ALL を指定
 'Kicking AFKer':
 #放置キック機能について
   'Enabled or not': true
