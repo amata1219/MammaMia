@@ -28,8 +28,8 @@ public class MamiyaCommand implements BukkitCommandExecutor {
         executor = define(
                 () -> Joiner.on('\n').join(
                         ChatColor.AQUA + "MAMMA-MIA INFORMATION",
-                        ChatColor.AQUA + "　PLUGIN VERSION -> " + ChatColor.WHITE + description.getVersion(),
-                        ChatColor.AQUA + "　SPIGOT VERSION -> " + ChatColor.WHITE + description.getAPIVersion(),
+                        ChatColor.AQUA + "    PLUGIN VERSION -> " + ChatColor.WHITE + description.getVersion(),
+                        ChatColor.AQUA + "  SPIGOT VERSION -> " + ChatColor.WHITE + description.getAPIVersion(),
                         ChatColor.AQUA + "  COMMAND -> " + ChatColor.WHITE + "/mamiya reload - コンフィグを再読み込みします。"
                 ),
                 bind("reload", reload)
