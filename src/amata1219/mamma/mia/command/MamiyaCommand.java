@@ -30,7 +30,7 @@ public class MamiyaCommand implements BukkitCommandExecutor {
                         ChatColor.AQUA + "MAMMA-MIA INFORMATION",
                         ChatColor.AQUA + "　PLUGIN VERSION -> " + ChatColor.WHITE + description.getVersion(),
                         ChatColor.AQUA + "　SPIGOT VERSION -> " + ChatColor.WHITE + description.getAPIVersion(),
-                        ChatColor.GRAY + "COMMAND -> /mamiya reload - コンフィグを再読み込みします。"
+                        ChatColor.GRAY + "  COMMAND -> /mamiya reload - コンフィグを再読み込みします。"
                 ),
                 bind("reload", reload)
         );
