@@ -53,6 +53,11 @@ public class TemporaryMinecartListener implements Listener {
         if (!(vehicle instanceof Minecart)) return;
 
         if (vehicle.hasMetadata(TEMPORARY_MINECART_METADATA)) vehicle.remove();
+        
+        // 降車時に埋まるので1マス上にテレポート
+        LivingEntity exitedEntity = event.getExited();
+        Location entityLocation = exitedEntity.getLocation();
+        exitedEntity.teleport(entityLocation.add(0, 1, 0));
     }
 
     private static boolean isMinecart(Material type) {
