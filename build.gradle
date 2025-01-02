@@ -1,8 +1,9 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
-def pluginFile = file('plugin.yml')
+def pluginFile = file('src/main/resources/plugin.yml')
 
 def pluginDir =  project.hasProperty('pluginDir') ? project.pluginDir : null
 
@@ -32,25 +33,13 @@ task updateDependency(type: Copy) {
 
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT'
-    implementation 'org.jooq:joor:0.9.15'
+    compileOnly 'org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT'
+    implementation 'org.jooq:joor:0.9.14'
 
     if (pluginDir) {
         compileOnly fileTree(dir: pluginDir, include: ['*.jar'])
     } else {
         throw new GradleException("pluginDir is not set. Please configure it in gradle.properties.")
-    }
-}
-
-// カスタムソースディレクトリを指定
-sourceSets {
-    main {
-        java {
-            setSrcDirs(['src'])
-        }
-        resources {
-            setSrcDirs(['src/resources'])
-        }
     }
 }
 
