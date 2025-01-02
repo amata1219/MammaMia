@@ -33,7 +33,7 @@ task updateDependency(type: Copy) {
 
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT'
     implementation 'org.jooq:joor:0.9.14'
 
     if (pluginDir) {
@@ -45,6 +45,9 @@ dependencies {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+tasks.shadowJar {
+    archiveClassifier.set('') // Fat JARの名前に`-all`を追加しない
 }
 
 jar {
