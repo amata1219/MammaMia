@@ -2,6 +2,8 @@ package amata1219.mamma.mia.listener;
 
 import amata1219.mamma.mia.MammaMia;
 import amata1219.mamma.mia.config.section.TemporaryIceBoatSection;
+import amata1219.mamma.vehicles.BoatTypes;
+
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -28,7 +30,6 @@ public class TemporaryIceBoatListener implements Listener {
 
     private static final Random RANDOM = new Random();
     private static final String TEMPORARY_BOAT_METADATA = "mamma-mia-temp-boat";
-    private static final List<TreeSpecies> BOAT_MATERIAL_TYPES = Arrays.asList(TreeSpecies.values());
 
     private final MammaMia plugin = MammaMia.instance();
 
@@ -54,9 +55,8 @@ public class TemporaryIceBoatListener implements Listener {
 
         spawnPoint.setYaw(player.getLocation().getYaw());
 
-        Boat boat = (Boat) player.getWorld().spawnEntity(spawnPoint, EntityType.BOAT);
+        Boat boat = (Boat) player.getWorld().spawnEntity(spawnPoint, BoatTypes.getRandomTypeBoatEntityType());
         boat.setMetadata(TEMPORARY_BOAT_METADATA, new FixedMetadataValue(plugin, true));
-        boat.setWoodType(BOAT_MATERIAL_TYPES.get(RANDOM.nextInt(BOAT_MATERIAL_TYPES.size())));
         boat.addPassenger(player);
 
         event.setCancelled(true);
