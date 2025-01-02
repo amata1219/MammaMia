@@ -7,10 +7,8 @@ import amata1219.mamma.mia.vehicles.BoatTypes;
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.TreeSpecies;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Boat;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Vehicle;
 import org.bukkit.event.EventHandler;
@@ -21,14 +19,9 @@ import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.metadata.FixedMetadataValue;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-
 
 public class TemporaryIceBoatListener implements Listener {
 
-    private static final Random RANDOM = new Random();
     private static final String TEMPORARY_BOAT_METADATA = "mamma-mia-temp-boat";
 
     private final MammaMia plugin = MammaMia.instance();
