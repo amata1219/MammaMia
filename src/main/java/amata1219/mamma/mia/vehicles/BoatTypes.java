@@ -1,4 +1,4 @@
-package amata1219.mamma.vehicles;
+package amata1219.mamma.mia.vehicles;
 
 import java.util.Arrays;
 import java.util.List;

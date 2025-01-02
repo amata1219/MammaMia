@@ -4,7 +4,7 @@ import amata1219.mamma.mia.MammaMia;
 import amata1219.mamma.mia.config.section.TemporaryIceBoatSection;
 import amata1219.mamma.mia.config.section.TemporaryWaterBoatSection;
 import amata1219.mamma.mia.reflect.APIPackage;
-import amata1219.mamma.vehicles.BoatTypes;
+import amata1219.mamma.mia.vehicles.BoatTypes;
 
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.Location;
