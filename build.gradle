@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+def pluginFile = file('src/main/resources/plugin.yml')
+
+def pluginDir =  project.hasProperty('pluginDir') ? project.pluginDir : null
+
+version = pluginFile.text.find(/version: (.+)/) { _, version -> version } ?: 'unknown'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        url = 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+    maven {
+        name = 'essentialsx'
+        url = 'https://repo.essentialsx.net/releases/'
+    }
+}
+
+task updateDependency(type: Copy) {
+    println 'updateDependency Start'
+    from "${pluginDir}"
+    into "lib/"
+    include "*.jar"
+    println 'updateDependency End'
+}
+
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT'
+    implementation 'org.jooq:joor:0.9.14'
+
+    if (pluginDir) {
+        compileOnly fileTree(dir: pluginDir, include: ['*.jar'])
+    } else {
+        throw new GradleException("pluginDir is not set. Please configure it in gradle.properties.")
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+tasks.shadowJar {
+    archiveClassifier.set('') // Fat JARの名前に`-all`を追加しない
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'amata1219.mamma.mia.MammaMia' // プラグインのメインクラス
+        )
+    }
+}
+
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:deprecation"
+        }
+    }
+}

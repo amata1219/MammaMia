@@ -1,7 +1,7 @@
 name: MammaMia
 main: amata1219.mamma.mia.MammaMia
-version: 1.0.0
-api-version: '1.16'
+version: 1.0.1
+api-version: '1.21.4'
 softdepend: [Essentials]
 author: '@amata1219'
 
